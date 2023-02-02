@@ -1,3 +1,6 @@
+import { clsx } from "clsx";
+import "../../App.css";
+
 const Keyboard = ({
   currentWords,
   setCurrentWords,
@@ -5,8 +8,10 @@ const Keyboard = ({
   setWordCount,
   setCurrentRow,
   currentRow,
+  setLettersUsed,
+  lettersUsed,
 }) => {
-  const test = (event) => {
+  const addLetter = (event) => {
     // let value = e.target.value;
     if (currentWords.length > 4) return;
     setCurrentWords([...currentWords, event.target.textContent]);
@@ -24,100 +29,76 @@ const Keyboard = ({
 
   const enterWord = () => {
     if (wordCount !== 5) return;
-    console.log(currentWords.join(""));
+    let saveLetters = lettersUsed;
+    for (let i = 0; i < currentWords.length; i++) {
+      saveLetters.push(currentWords[i]);
+    }
+
+    setLettersUsed(saveLetters);
     setCurrentRow(currentRow + 1);
-    setCurrentWords([]);
     setWordCount(0);
+
+    resetWords();
   };
 
+  const resetWords = () => {
+    setCurrentWords([]);
+  };
+
+  let letterRow1 = ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"];
+  let letterRow2 = ["A", "S", "D", "F", "G", "H", "J", "K", "L"];
+  let letterRow3 = ["Z", "X", "C", "V", "B", "N", "M"];
   return (
     <>
       <div className="keyboard-row-1">
-        <div className="key" onClick={(e) => test(e)}>
-          Q
-        </div>
-        <div className="key" onClick={(e) => test(e)}>
-          W
-        </div>
-        <div className="key" onClick={(e) => test(e)}>
-          E
-        </div>
-        <div className="key" onClick={(e) => test(e)}>
-          R
-        </div>
-        <div className="key" onClick={(e) => test(e)}>
-          T
-        </div>
-        <div className="key" onClick={(e) => test(e)}>
-          Y
-        </div>
-        <div className="key" onClick={(e) => test(e)}>
-          U
-        </div>
-        <div className="key" onClick={(e) => test(e)}>
-          I
-        </div>
-        <div className="key" onClick={(e) => test(e)}>
-          O
-        </div>
-        <div className="key" onClick={(e) => test(e)}>
-          P
-        </div>
+        {letterRow1.map((letters, i) => {
+          // let letterUsed;
+          // if (letterRow1.includes(lettersUsed) === true) {
+          //   letterUsed = "greyOut";
+          // }
+          return (
+            <div
+              key={i}
+              className={lettersUsed.includes(letters) ? "key greyOut" : "key"}
+              onClick={(e) => addLetter(e)}
+            >
+              {letters}
+            </div>
+          );
+        })}
       </div>
       <div className="keyboard-row-2">
-        <div className="key" onClick={(e) => test(e)}>
-          A
-        </div>
-        <div className="key" onClick={(e) => test(e)}>
-          S
-        </div>
-        <div className="key" onClick={(e) => test(e)}>
-          D
-        </div>
-        <div className="key" onClick={(e) => test(e)}>
-          F
-        </div>
-        <div className="key" onClick={(e) => test(e)}>
-          G
-        </div>
-        <div className="key" onClick={(e) => test(e)}>
-          H
-        </div>
-        <div className="key" onClick={(e) => test(e)}>
-          J
-        </div>
-        <div className="key" onClick={(e) => test(e)}>
-          K
-        </div>
-        <div className="key" onClick={(e) => test(e)}>
-          L
-        </div>
+        {letterRow2.map((letters, i) => {
+          let letterUsed;
+          if (letterRow1.includes(lettersUsed) === true) {
+            letterUsed = "greyOut";
+          }
+          return (
+            <div
+              key={i}
+              className={lettersUsed.includes(letters) ? "key greyOut" : "key"}
+              onClick={(e) => addLetter(e)}
+            >
+              {letters}
+            </div>
+          );
+        })}
       </div>
       <div className="keyboard-row-3">
         <div className="key key-enter" onClick={() => enterWord()}>
           ENTER
         </div>
-        <div className="key" onClick={(e) => test(e)}>
-          Z
-        </div>
-        <div className="key" onClick={(e) => test(e)}>
-          X
-        </div>
-        <div className="key" onClick={(e) => test(e)}>
-          C
-        </div>
-        <div className="key" onClick={(e) => test(e)}>
-          V
-        </div>
-        <div className="key" onClick={(e) => test(e)}>
-          B
-        </div>
-        <div className="key" onClick={(e) => test(e)}>
-          N
-        </div>
-        <div className="key" onClick={(e) => test(e)}>
-          M
-        </div>
+        {letterRow3.map((letters, i) => {
+          return (
+            <div
+              key={i}
+              className={lettersUsed.includes(letters) ? "key greyOut" : "key"}
+              onClick={(e) => addLetter(e)}
+            >
+              {letters}
+            </div>
+          );
+        })}
         <div className="key key-delete" onClick={() => deleteWord()}>
           DELETE
         </div>

@@ -1,16 +1,35 @@
 import { useState, useEffect } from "react";
 
-const Blocks = ({ row, currentRow, currentWords, wordCount }) => {
+const Blocks = ({
+  row,
+  currentRow,
+  currentWords,
+  wordCount,
+  guessWord,
+  setCurrentWords,
+  previousWord,
+  setPreviousWord,
+}) => {
   const [inputWord, setInputWord] = useState(["", "", "", "", ""]);
+
+  useEffect(() => {
+    if (previousWord.length !== 5) return;
+    if (previousWord.join("") === guessWord) {
+      console.log("yes");
+    } else if (previousWord.join("") !== guessWord) {
+      console.log("no");
+    }
+  }, [currentRow]);
 
   useEffect(() => {
     if (row !== currentRow) return;
     console.log("this is row ", row);
-    let test = inputWord.map((letter, i) => {
+    let word = inputWord.map((letter, i) => {
       if (currentWords[i] == undefined) return "";
       return currentWords[i];
     });
-    setInputWord(test);
+    setInputWord(word);
+    setPreviousWord(currentWords);
   }, [wordCount, currentRow]);
 
   return (

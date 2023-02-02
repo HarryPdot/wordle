@@ -79,3 +79,7 @@
 .key-enter {
   width: 50px;
 }
+
+.greyOut {
+  background-color: rgb(71, 71, 71);
+}

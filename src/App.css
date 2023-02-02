@@ -28,6 +28,11 @@
   height: 60px;
   width: 60px;
   border: rgb(90, 90, 90) 1px solid;
+  color: white;
+  font-size: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .keyboard {

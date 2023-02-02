@@ -59,10 +59,15 @@
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  user-select: none;
 }
 
 .key:hover {
   background-color: rgb(156, 156, 156);
+}
+
+.key:active {
+  background-color: rgb(185, 184, 184);
 }
 
 .key-delete,

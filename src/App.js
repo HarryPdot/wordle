@@ -1,89 +1,23 @@
 import logo from "./logo.svg";
 import "./App.css";
+import { Blocks } from "./Components/Blocks/Blocks";
+import { Keyboard } from "./Components/keyboard/keyboard";
+import { useState, useEffect } from "react";
 
 function App() {
+  const [row1, setRow1] = useState("");
   return (
     <div className="App">
       <h1 className="title">wordle</h1>
       <div className="wordle-blocks">
-        <div className="word-blocks">
-          <div className="block"></div>
-          <div className="block"></div>
-          <div className="block"></div>
-          <div className="block"></div>
-          <div className="block"></div>
-        </div>
-        <div className="word-blocks">
-          <div className="block"></div>
-          <div className="block"></div>
-          <div className="block"></div>
-          <div className="block"></div>
-          <div className="block"></div>
-        </div>
-        <div className="word-blocks">
-          <div className="block"></div>
-          <div className="block"></div>
-          <div className="block"></div>
-          <div className="block"></div>
-          <div className="block"></div>
-        </div>
-        <div className="word-blocks">
-          <div className="block"></div>
-          <div className="block"></div>
-          <div className="block"></div>
-          <div className="block"></div>
-          <div className="block"></div>
-        </div>
-        <div className="word-blocks">
-          <div className="block"></div>
-          <div className="block"></div>
-          <div className="block"></div>
-          <div className="block"></div>
-          <div className="block"></div>
-        </div>
-        <div className="word-blocks">
-          <div className="block"></div>
-          <div className="block"></div>
-          <div className="block"></div>
-          <div className="block"></div>
-          <div className="block"></div>
-        </div>
+        <Blocks row="1" />
+        <Blocks row="2" />
+        <Blocks row="3" />
+        <Blocks row="4" />
+        <Blocks row="5" />
       </div>
       <div className="keyboard">
-        <div className="keyboard-row-1">
-          <div className="key">Q</div>
-          <div className="key">W</div>
-          <div className="key">E</div>
-          <div className="key">R</div>
-          <div className="key">T</div>
-          <div className="key">Y</div>
-          <div className="key">U</div>
-          <div className="key">I</div>
-          <div className="key">O</div>
-          <div className="key">P</div>
-        </div>
-        <div className="keyboard-row-2">
-          <div className="key">A</div>
-          <div className="key">S</div>
-          <div className="key">D</div>
-          <div className="key">F</div>
-          <div className="key">G</div>
-          <div className="key">H</div>
-          <div className="key">J</div>
-          <div className="key">K</div>
-          <div className="key">L</div>
-        </div>
-        <div className="keyboard-row-3">
-          <div className="key key-enter">ENTER</div>
-          <div className="key">Z</div>
-          <div className="key">X</div>
-          <div className="key">C</div>
-          <div className="key">V</div>
-          <div className="key">B</div>
-          <div className="key">N</div>
-          <div className="key">M</div>
-          <div className="key key-delete">DELETE</div>
-        </div>
+        <Keyboard></Keyboard>
       </div>
     </div>
   );

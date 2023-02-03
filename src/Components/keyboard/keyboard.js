@@ -52,10 +52,6 @@ const Keyboard = ({
     <>
       <div className="keyboard-row-1">
         {letterRow1.map((letters, i) => {
-          // let letterUsed;
-          // if (letterRow1.includes(lettersUsed) === true) {
-          //   letterUsed = "greyOut";
-          // }
           return (
             <div
               key={i}
@@ -69,10 +65,6 @@ const Keyboard = ({
       </div>
       <div className="keyboard-row-2">
         {letterRow2.map((letters, i) => {
-          let letterUsed;
-          if (letterRow1.includes(lettersUsed) === true) {
-            letterUsed = "greyOut";
-          }
           return (
             <div
               key={i}

@@ -1,20 +1,12 @@
 import { clsx } from "clsx";
 import { useEffect, useState } from "react";
 
-const Block = ({
-  column,
-  inputWord,
-  previousWord,
-  currentRow,
-  guessWord,
-  lettersUsed,
-}) => {
+const Block = ({ column, inputWord, previousWord, currentRow, guessWord }) => {
   const [colorLetter, setColorLetter] = useState("yes");
-
-  let something = "yes";
 
   useEffect(() => {
     if (previousWord === []) return;
+    console.log(guessWord);
     if (guessWord[column] === inputWord[column]) {
       setColorLetter("green");
     } else if (guessWord.split("").includes(inputWord[column]) === true) {

@@ -1,22 +1,24 @@
-import logo from "./logo.svg";
 import "./App.css";
 import { Blocks } from "./Components/Blocks/Blocks";
 import { Keyboard } from "./Components/keyboard/keyboard";
 import { useState, useEffect } from "react";
+import { data } from "./Components/Data/Data";
 
 function App() {
   const [currentRow, setCurrentRow] = useState(1);
   const [currentWords, setCurrentWords] = useState([]);
   const [wordCount, setWordCount] = useState(0);
-  const [guessWord, setGuessWord] = useState("HOUSE");
+  const [guessWord, setGuessWord] = useState("");
   const [lettersUsed, setLettersUsed] = useState([]);
   const [previousWord, setPreviousWord] = useState([]);
 
   let row = [1, 2, 3, 4, 5];
 
-  // useEffect(() => {
-  //   setGuessWord("HOUSE");
-  // }, []);
+  useEffect(() => {
+    let randomize = Math.floor(Math.random() * data.length - 1);
+    console.log(data[randomize]);
+    setGuessWord(data[randomize].toUpperCase());
+  }, []);
 
   return (
     <div className="App">

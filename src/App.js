@@ -16,7 +16,6 @@ function App() {
 
   useEffect(() => {
     let randomize = Math.floor(Math.random() * data.length - 1);
-    console.log(data[randomize]);
     setGuessWord(data[randomize].toUpperCase());
   }, []);
 

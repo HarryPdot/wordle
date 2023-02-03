@@ -25,7 +25,6 @@ const Blocks = ({
 
   useEffect(() => {
     if (row !== currentRow) return;
-    console.log("this is row ", row);
     let word = inputWord.map((letter, i) => {
       if (currentWords[i] == undefined) return "";
       return currentWords[i];

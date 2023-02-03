@@ -83,3 +83,11 @@
 .greyOut {
   background-color: rgb(71, 71, 71);
 }
+
+.green {
+  background-color: green;
+}
+
+.yellow {
+  background-color: yellow;
+}

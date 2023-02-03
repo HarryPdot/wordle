@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Block } from "./Block";
 
 const Blocks = ({
   row,
@@ -9,16 +10,17 @@ const Blocks = ({
   setCurrentWords,
   previousWord,
   setPreviousWord,
+  lettersUsed,
 }) => {
   const [inputWord, setInputWord] = useState(["", "", "", "", ""]);
-
+  let column = [0, 1, 2, 3, 4];
   useEffect(() => {
     if (previousWord.length !== 5) return;
-    if (previousWord.join("") === guessWord) {
-      console.log("yes");
-    } else if (previousWord.join("") !== guessWord) {
-      console.log("no");
-    }
+    // if (previousWord.join("") === guessWord) {
+    //   console.log("yes");
+    // } else if (previousWord.join("") !== guessWord) {
+    //   console.log("no");
+    // }
   }, [currentRow]);
 
   useEffect(() => {
@@ -34,11 +36,19 @@ const Blocks = ({
 
   return (
     <div className="word-blocks">
-      <div className="block">{inputWord[0]}</div>
-      <div className="block">{inputWord[1]}</div>
-      <div className="block">{inputWord[2]}</div>
-      <div className="block">{inputWord[3]}</div>
-      <div className="block">{inputWord[4]}</div>
+      {column.map((block, i) => {
+        return (
+          <Block
+            key={i}
+            column={block}
+            inputWord={inputWord}
+            previousWord={previousWord}
+            currentRow={currentRow}
+            guessWord={guessWord}
+            lettersUsed={lettersUsed}
+          />
+        );
+      })}
     </div>
   );
 };

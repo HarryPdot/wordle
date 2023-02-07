@@ -6,6 +6,7 @@
   justify-content: space-between;
   align-items: center;
   flex-direction: column;
+  position: relative;
 }
 
 .title {
@@ -90,4 +91,52 @@
 
 .yellow {
   background-color: rgb(209, 209, 71);
+}
+
+.error-message {
+  width: 120px;
+  height: 40px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  position: absolute;
+  top: 10vh;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.visible {
+  visibility: visible;
+  opacity: 1;
+}
+
+.hidden {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s 1s, opacity 1s linear;
+}
+
+@keyframes nudge {
+  0% {
+    transform: translateX(5px);
+  }
+
+  33% {
+    transform: translateX(-5px);
+  }
+
+  66% {
+    transform: translateX(5px);
+  }
+
+  100% {
+    transform: translateX(0px);
+  }
+}
+
+.nudging {
+  animation: nudge 0.2s linear;
 }

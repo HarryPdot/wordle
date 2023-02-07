@@ -1,5 +1,6 @@
 import { clsx } from "clsx";
 import "../../App.css";
+import { data } from "../Data/Data";
 
 const Keyboard = ({
   currentWords,
@@ -10,6 +11,7 @@ const Keyboard = ({
   currentRow,
   setLettersUsed,
   lettersUsed,
+  setNotEnough,
 }) => {
   const addLetter = (event) => {
     // let value = e.target.value;
@@ -29,6 +31,10 @@ const Keyboard = ({
 
   const enterWord = () => {
     if (wordCount !== 5) return;
+    if (data.includes(currentWords.join("").toLowerCase()) === false) {
+      setNotEnough();
+      return;
+    }
     let saveLetters = lettersUsed;
     for (let i = 0; i < currentWords.length; i++) {
       saveLetters.push(currentWords[i]);

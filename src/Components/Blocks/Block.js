@@ -6,7 +6,6 @@ const Block = ({ column, inputWord, previousWord, currentRow, guessWord }) => {
 
   useEffect(() => {
     if (previousWord === []) return;
-    console.log(guessWord);
     if (guessWord[column] === inputWord[column]) {
       setColorLetter("green");
     } else if (guessWord.split("").includes(inputWord[column]) === true) {

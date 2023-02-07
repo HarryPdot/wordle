@@ -12,6 +12,8 @@ const Keyboard = ({
   setLettersUsed,
   lettersUsed,
   setNotEnough,
+  setGameOver,
+  guessWord,
 }) => {
   const addLetter = (event) => {
     // let value = e.target.value;
@@ -33,6 +35,10 @@ const Keyboard = ({
     if (wordCount !== 5) return;
     if (data.includes(currentWords.join("").toLowerCase()) === false) {
       setNotEnough();
+      return;
+    }
+    if (guessWord === currentWords.join("")) {
+      setGameOver();
       return;
     }
     let saveLetters = lettersUsed;

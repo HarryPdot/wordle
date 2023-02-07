@@ -12,6 +12,7 @@ function App() {
   const [lettersUsed, setLettersUsed] = useState([]);
   const [previousWord, setPreviousWord] = useState([]);
   const [error, setError] = useState(false);
+  const [correct, setCorrect] = useState(false);
 
   let row = [1, 2, 3, 4, 5];
 
@@ -22,6 +23,10 @@ function App() {
     }, 500);
   };
 
+  const setGameOver = () => {
+    setCorrect(true);
+  };
+
   useEffect(() => {
     let randomize = Math.floor(Math.random() * data.length - 1);
     setGuessWord(data[randomize].toUpperCase());
@@ -29,6 +34,11 @@ function App() {
 
   return (
     <div className="App">
+      {correct ? (
+        <div className="overlay">
+          <div className="play-again-module"></div>
+        </div>
+      ) : null}
       <h1 className="title">wordle</h1>
       {error ? (
         <div className="error-message visible">not in word list</div>
@@ -65,6 +75,8 @@ function App() {
           setLettersUsed={setLettersUsed}
           lettersUsed={lettersUsed}
           setNotEnough={setNotEnough}
+          setGameOver={setGameOver}
+          guessWord={guessWord}
         />
       </div>
     </div>

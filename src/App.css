@@ -140,3 +140,18 @@
 .nudging {
   animation: nudge 0.2s linear;
 }
+
+.overlay {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.play-again-module {
+  height: 600px;
+  width: 500px;
+  background: rgb(22, 22, 22);
+}

@@ -19,11 +19,6 @@ const Blocks = ({
   let column = [0, 1, 2, 3, 4];
   useEffect(() => {
     if (previousWord.length !== 5) return;
-    // if (previousWord.join("") === guessWord) {
-    //   console.log("yes");
-    // } else if (previousWord.join("") !== guessWord) {
-    //   console.log("no");
-    // }
   }, [currentRow]);
 
   useEffect(() => {
@@ -37,7 +32,7 @@ const Blocks = ({
 
   useEffect(() => {
     if (game === 1) return;
-    console.log("resetting");
+
     setInputWord(["", "", "", "", ""]);
   }, [game]);
 

@@ -17,6 +17,7 @@ const Keyboard = ({
   setRemaining,
   previousWord,
   setPreviousWord,
+  game,
 }) => {
   const addLetter = (event) => {
     // let value = e.target.value;
@@ -43,6 +44,9 @@ const Keyboard = ({
     if (guessWord === currentWords.join("")) {
       setGameOver();
       return;
+    }
+    if (currentRow === 6) {
+      setGameOver();
     }
     let saveLetters = lettersUsed;
     for (let i = 0; i < currentWords.length; i++) {
@@ -77,6 +81,7 @@ const Keyboard = ({
               lettersUsed={lettersUsed}
               guessWord={guessWord}
               previousWord={previousWord}
+              game={game}
             >
               {letters}
             </Keys>
@@ -95,6 +100,7 @@ const Keyboard = ({
               lettersUsed={lettersUsed}
               guessWord={guessWord}
               previousWord={previousWord}
+              game={game}
             >
               {letters}
             </Keys>
@@ -116,6 +122,7 @@ const Keyboard = ({
               lettersUsed={lettersUsed}
               guessWord={guessWord}
               previousWord={previousWord}
+              game={game}
             >
               {letters}
             </Keys>

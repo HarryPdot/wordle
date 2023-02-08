@@ -14,8 +14,19 @@ function App() {
   const [error, setError] = useState(false);
   const [correct, setCorrect] = useState(false);
   const [remaining, setRemaining] = useState();
+  const [game, setGame] = useState(1);
 
-  let row = [1, 2, 3, 4, 5];
+  let row = [1, 2, 3, 4, 5, 6];
+
+  const randomized = () => {
+    let randomize = Math.floor(Math.random() * data.length - 1);
+    return randomize;
+  };
+
+  useEffect(() => {
+    let randomizedWord = randomized();
+    setGuessWord(data[randomizedWord].toUpperCase());
+  }, []);
 
   const setNotEnough = () => {
     setError(true);
@@ -28,16 +39,32 @@ function App() {
     setCorrect(true);
   };
 
-  useEffect(() => {
-    let randomize = Math.floor(Math.random() * data.length - 1);
-    setGuessWord(data[randomize].toUpperCase());
-  }, []);
+  const handlePlayAgain = () => {
+    setCurrentRow(1);
+    setCurrentWords([]);
+    setWordCount(0);
+    let randomizedWord = randomized();
+    setGuessWord(data[randomizedWord].toUpperCase());
+    setLettersUsed([]);
+    setPreviousWord([]);
+    setError(false);
+    setCorrect(false);
+    setGame(game + 1);
+  };
 
   return (
     <div className="App">
       {correct ? (
         <div className="overlay">
-          <div className="play-again-module"></div>
+          <div className="play-again-modal">
+            <h1>
+              {guessWord.toUpperCase() == currentWords.join("").toUpperCase()
+                ? "You passed!"
+                : "You failed"}
+            </h1>
+            <div>the word was {guessWord.toUpperCase()}</div>
+            <button onClick={() => handlePlayAgain()}>play again?</button>
+          </div>
         </div>
       ) : null}
       <h1 className="title">wordle</h1>
@@ -63,6 +90,7 @@ function App() {
               lettersUsed={lettersUsed}
               remaining={remaining}
               setRemaining={setRemaining}
+              game={game}
             />
           );
         })}
@@ -83,6 +111,7 @@ function App() {
           setRemaining={setRemaining}
           previousWord={previousWord}
           setPreviousWord={setPreviousWord}
+          game={game}
         />
       </div>
     </div>

@@ -9,6 +9,7 @@ const Block = ({
   guessWord,
   remaining,
   setRemaining,
+  game,
 }) => {
   const [colorLetter, setColorLetter] = useState("yes");
 
@@ -23,6 +24,12 @@ const Block = ({
       setColorLetter("");
     }
   }, [currentRow]);
+
+  useEffect(() => {
+    if (game === 1) return;
+    console.log("resetting");
+    setColorLetter("");
+  }, [game]);
 
   return <div className={clsx("block", colorLetter)}>{inputWord[column]}</div>;
 };

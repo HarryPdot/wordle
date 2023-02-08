@@ -150,8 +150,13 @@
   align-items: center;
 }
 
-.play-again-module {
+.play-again-modal {
   height: 600px;
   width: 500px;
   background: rgb(22, 22, 22);
+  color: white;
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
 }

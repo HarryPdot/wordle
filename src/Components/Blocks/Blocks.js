@@ -13,6 +13,7 @@ const Blocks = ({
   lettersUsed,
   remaining,
   setRemaining,
+  game,
 }) => {
   const [inputWord, setInputWord] = useState(["", "", "", "", ""]);
   let column = [0, 1, 2, 3, 4];
@@ -34,6 +35,12 @@ const Blocks = ({
     setInputWord(word);
   }, [wordCount, currentRow]);
 
+  useEffect(() => {
+    if (game === 1) return;
+    console.log("resetting");
+    setInputWord(["", "", "", "", ""]);
+  }, [game]);
+
   return (
     <div className="word-blocks">
       {column.map((block, i) => {
@@ -48,6 +55,7 @@ const Blocks = ({
             lettersUsed={lettersUsed}
             remaining={remaining}
             setRemaining={setRemaining}
+            game={game}
           />
         );
       })}

@@ -1,6 +1,6 @@
-import { clsx } from "clsx";
 import "../../App.css";
 import { data } from "../Data/Data";
+import { Keys } from "../Keys/Keys";
 
 const Keyboard = ({
   currentWords,
@@ -14,6 +14,9 @@ const Keyboard = ({
   setNotEnough,
   setGameOver,
   guessWord,
+  setRemaining,
+  previousWord,
+  setPreviousWord,
 }) => {
   const addLetter = (event) => {
     // let value = e.target.value;
@@ -45,11 +48,11 @@ const Keyboard = ({
     for (let i = 0; i < currentWords.length; i++) {
       saveLetters.push(currentWords[i]);
     }
-
+    setRemaining(guessWord);
     setLettersUsed(saveLetters);
     setCurrentRow(currentRow + 1);
     setWordCount(0);
-
+    setPreviousWord(currentWords);
     resetWords();
   };
 
@@ -65,26 +68,36 @@ const Keyboard = ({
       <div className="keyboard-row-1">
         {letterRow1.map((letters, i) => {
           return (
-            <div
+            <Keys
               key={i}
               className={lettersUsed.includes(letters) ? "key greyOut" : "key"}
               onClick={(e) => addLetter(e)}
+              letterRow={letterRow1}
+              currentRow={currentRow}
+              lettersUsed={lettersUsed}
+              guessWord={guessWord}
+              previousWord={previousWord}
             >
               {letters}
-            </div>
+            </Keys>
           );
         })}
       </div>
       <div className="keyboard-row-2">
         {letterRow2.map((letters, i) => {
           return (
-            <div
+            <Keys
               key={i}
               className={lettersUsed.includes(letters) ? "key greyOut" : "key"}
               onClick={(e) => addLetter(e)}
+              letterRow={letterRow2}
+              currentRow={currentRow}
+              lettersUsed={lettersUsed}
+              guessWord={guessWord}
+              previousWord={previousWord}
             >
               {letters}
-            </div>
+            </Keys>
           );
         })}
       </div>
@@ -94,13 +107,18 @@ const Keyboard = ({
         </div>
         {letterRow3.map((letters, i) => {
           return (
-            <div
+            <Keys
               key={i}
               className={lettersUsed.includes(letters) ? "key greyOut" : "key"}
               onClick={(e) => addLetter(e)}
+              letterRow={letterRow3}
+              currentRow={currentRow}
+              lettersUsed={lettersUsed}
+              guessWord={guessWord}
+              previousWord={previousWord}
             >
               {letters}
-            </div>
+            </Keys>
           );
         })}
         <div className="key key-delete" onClick={() => deleteWord()}>

@@ -11,6 +11,8 @@ const Blocks = ({
   previousWord,
   setPreviousWord,
   lettersUsed,
+  remaining,
+  setRemaining,
 }) => {
   const [inputWord, setInputWord] = useState(["", "", "", "", ""]);
   let column = [0, 1, 2, 3, 4];
@@ -30,7 +32,6 @@ const Blocks = ({
       return currentWords[i];
     });
     setInputWord(word);
-    setPreviousWord(currentWords);
   }, [wordCount, currentRow]);
 
   return (
@@ -45,6 +46,8 @@ const Blocks = ({
             currentRow={currentRow}
             guessWord={guessWord}
             lettersUsed={lettersUsed}
+            remaining={remaining}
+            setRemaining={setRemaining}
           />
         );
       })}

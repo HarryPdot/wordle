@@ -13,6 +13,7 @@ function App() {
   const [previousWord, setPreviousWord] = useState([]);
   const [error, setError] = useState(false);
   const [correct, setCorrect] = useState(false);
+  const [remaining, setRemaining] = useState();
 
   let row = [1, 2, 3, 4, 5];
 
@@ -60,6 +61,8 @@ function App() {
               previousWord={previousWord}
               setPreviousWord={setPreviousWord}
               lettersUsed={lettersUsed}
+              remaining={remaining}
+              setRemaining={setRemaining}
             />
           );
         })}
@@ -77,6 +80,9 @@ function App() {
           setNotEnough={setNotEnough}
           setGameOver={setGameOver}
           guessWord={guessWord}
+          setRemaining={setRemaining}
+          previousWord={previousWord}
+          setPreviousWord={setPreviousWord}
         />
       </div>
     </div>
